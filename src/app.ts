@@ -1,22 +1,45 @@
-import * as readline from 'readline';
+import { Auth } from "./classes/Auth";
+import{ ActionGame } from "./classes/ActionGame"
+import { RacingGame } from "./classes/RacingGame";
+import { TeamScore } from "./classes/TeamScore";
+import { SingleScore } from "./classes/SingleScore";
 
-import { SingleScore } from './classes/SingleScore';
-import { ActionGame } from './classes/ActionGame';
-import { TeamScore } from './classes/TeamScore';
-import { RacingGame } from './classes/RacingGame';
 
-// Assuming the above methods have been added to the Game class and it's correctly imported
-let myActionGame = new ActionGame("Super Fighters", "001");
-let myRacingGame = new RacingGame("Need for Speed","002");
-let teamAchievements = [10, 15, 20];
-let totalTimeTaken = 15;
-let teamScore = new TeamScore(teamAchievements, totalTimeTaken);
-let singleScore = new SingleScore(10, 5);  // Example of a SingleScore instance
-myActionGame.addScore(teamScore);
-myRacingGame.addScore(singleScore)
+// 1. User Registration
+let gamer = new Auth('Rumel', 'password123');
+gamer.register();
 
-console.log(myActionGame.getGameDetails());  // This will print the game name and ID
-console.log(`Scores: ${myActionGame.getScores().join(", ")}`);  // This will print the scores
+// 2. User Login
+gamer.login();
 
-console.log(myRacingGame.getGameDetails());  // This will print the game name and ID
-console.log(`Scores: ${myRacingGame.getScores().join(", ")}`);  // This will print the scores
+// 3. Playing an action game
+let superFighters = new ActionGame('Super Fighters', '001');
+superFighters.implement_game();
+
+// 4. Adding scores after playing the action game
+let teamScore = new TeamScore([100, 95, 110], 20);  // First Values mean 3 members in a team and second value is the time taken
+superFighters.addScore(teamScore);
+
+// 5. Playing a racing game
+let speedRacers = new RacingGame('Speed Racers', '002');
+speedRacers.implement_game();
+
+// 6. Adding scores after playing the racing game
+let singleScore = new SingleScore(10, 5); // Example of a SingleScore instance for racing game
+speedRacers.addScore(singleScore);
+
+// 7. Adding games to user's game array
+gamer.addGame(superFighters);
+gamer.addGame(speedRacers);
+
+// 8. Getting game details and scores for action game
+console.log(superFighters.getGameDetails());
+console.log("Scores for Super Fighters:", superFighters.getScores());
+
+// 9. Getting game details and scores for racing game
+console.log(speedRacers.getGameDetails());
+console.log("Scores for Speed Racers:", speedRacers.getScores());
+
+// 10. User Logout
+gamer.logout();
+
