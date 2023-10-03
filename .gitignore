@@ -1,0 +1,33 @@
+# Node modules and npm debug logs
+node_modules/
+npm-debug.log
+
+# Build output directory (as specified in tsconfig.json)
+dist/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+# IDE-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# TypeScript type declarations
+*.d.ts
+
+# Yarn lock file (if you're using Yarn)
+yarn-error.log
