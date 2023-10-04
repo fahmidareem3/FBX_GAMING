@@ -1,4 +1,3 @@
-import { Cheatable } from "../interfaces/Cheatable";
 import { Game } from "../abstracts/Game";
 export class StrategyGame extends Game {
   constructor(game_name: string, game_id: string) {
