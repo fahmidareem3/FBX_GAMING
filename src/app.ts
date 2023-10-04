@@ -1,5 +1,4 @@
 import { Auth } from "./classes/Auth";
-
 import { TeamScore } from "./classes/TeamScore";
 import { SingleScore } from "./classes/SingleScore";
 import { GameFactory } from "./abstracts/GameFactory";
@@ -21,7 +20,6 @@ invoker.setCommand(registerCommand);
 invoker.executeCommand(); // This will register the user
 
 // 2. Saving User Data to the database
-
 let db = DatabaseConnection.getInstance();
 db.query(
   `INSERT INTO users (name, password) VALUES ('${gamer.user_name}', '********')`
@@ -66,6 +64,7 @@ console.log("Scores for Super Fighters:", superFighters.getScores());
 
 //11. Status updated after scoring
 gamer.update_status();
+
 // 12. Getting game details and scores for racing game
 console.log(speedRacers.getGameDetails());
 console.log("Scores for Speed Racers:", speedRacers.getScores());
